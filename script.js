@@ -4,14 +4,14 @@
 function loadScripts() {
   const files = [
     "./budget.js",
-    "./escape_&_init.js",
     "./favorites.js",
     "./history.js",
     "./itinerary.js",
     "./map.js",
     "./profil.js",
     "./search.js",
-    "./review.js"
+    "./review.js",
+    "./escape_&_init.js"
   ];
 
   files.forEach(file => {
