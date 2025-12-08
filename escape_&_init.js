@@ -2,7 +2,6 @@ function escapeHtml(str) {
   return String(str).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[m]);
 }
 
-
 document.addEventListener("DOMContentLoaded", () => {
   initMap();
   populateCountryFilter();
@@ -10,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   displayItinerary();
   loadBudget();
   applyProfileUI();
+  initReviews();
 
   const results = document.getElementById("results");
   if (results) results.innerHTML = `<p class="muted">🔍
