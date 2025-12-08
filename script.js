@@ -10,7 +10,7 @@ function loadScripts() {
     "./map.js",
     "./profil.js",
     "./search.js",
-    "./review.js",
+    "./reviews.js",
     "./escape_&_init.js"
   ];
 
