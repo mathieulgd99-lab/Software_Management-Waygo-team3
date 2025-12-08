@@ -3,8 +3,8 @@
 
 function loadScripts() {
   const files = [
-    "./escape_&_init.js",
     "./budget.js",
+    "./escape_&_init.js",
     "./favorites.js",
     "./history.js",
     "./itinerary.js",
