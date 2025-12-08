@@ -3,7 +3,6 @@
 
 function loadScripts() {
   const files = [
-    "./escape_&_init.js",
     "./budget.js",
     "./favorites.js",
     "./history.js",
@@ -11,7 +10,8 @@ function loadScripts() {
     "./map.js",
     "./profil.js",
     "./search.js",
-    "./review.js"
+    "./reviews.js",
+    "./escape_&_init.js"
   ];
 
   files.forEach(file => {
