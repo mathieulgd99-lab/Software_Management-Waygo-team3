@@ -1,9 +1,19 @@
 function addToFavorites(id) {
   let favs = JSON.parse(localStorage.getItem("favorites")) || [];
+  
   if (!favs.includes(id)) {
     favs.push(id);
     localStorage.setItem("favorites", JSON.stringify(favs));
+    
+    const dest = destinations.find(d => d.id === id);
+    const name = dest ? dest.name : "Destination";
+    alert(`❤️ "${name}" has been added to your favorites!`);
+    // -----------------------------------------------
+    
+  } else {
+    alert("This destination is already in your favorites.");
   }
+  
   displayFavorites();
 }
 
@@ -34,4 +44,54 @@ function removeFavorite(id) {
   favs = favs.filter(x => x !== id);
   localStorage.setItem("favorites", JSON.stringify(favs));
   displayFavorites();
+}
+
+function clearAllFavorites() {
+  if (!checkLoginStatus()) return;
+
+  const favs = JSON.parse(localStorage.getItem("favorites")) || [];
+  
+  if (favs.length === 0) {
+    alert("Your favorites list is already empty.");
+    return;
+  }
+
+  if (confirm(`Are you sure you want to remove all ${favs.length} favorites? This cannot be undone.`)) {
+    localStorage.setItem("favorites", JSON.stringify([]));
+    
+    displayFavorites();
+    
+    const results = document.getElementById("results");
+    if (results && results.innerHTML !== "") {
+        searchDestinations(); 
+    }
+  }
+}
+
+function exportFavoritesToText() {
+  if (!checkLoginStatus()) return;
+
+  const favs = JSON.parse(localStorage.getItem("favorites")) || [];
+  if (favs.length === 0) {
+    alert("Nothing to export!");
+    return;
+  }
+
+  let exportText = "✈️ My Waygo Wishlist:\n\n";
+  
+  favs.forEach(id => {
+    const d = destinations.find(x => x.id === id);
+    if (d) {
+      exportText += `- ${d.name} (${d.country}): Approx. $${d.cost}\n`;
+    }
+  });
+
+  exportText += "\nPlan your trip on Waygo!";
+
+  navigator.clipboard.writeText(exportText).then(() => {
+    alert("📋 Favorites list copied to clipboard! You can paste it in an email or message.");
+  }).catch(err => {
+    console.error("Failed to copy", err);
+    alert("Failed to copy automatically. Please check permissions.");
+  });
 }
