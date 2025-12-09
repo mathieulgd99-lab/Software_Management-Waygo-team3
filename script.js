@@ -35,8 +35,16 @@ function loadScripts() {
 
   chain.then(() => {
     console.log("All scripts loaded.");
-    if (document.readyState === "interactive" || document.readyState === "complete") {
-      document.dispatchEvent(new Event("DOMContentLoaded"));
+    // signal explicit pour les pages qui s'appuient sur l'ordre de chargement
+    try {
+      window.WAYGO_SCRIPTS_LOADED = true;
+      document.dispatchEvent(new Event("waygo:allScriptsLoaded"));
+      // ancien comportement (conserver si utile)
+      if (document.readyState === "interactive" || document.readyState === "complete") {
+        document.dispatchEvent(new Event("DOMContentLoaded"));
+      }
+    } catch (e) {
+      console.warn("Could not dispatch scriptsLoaded event", e);
     }
   });
 }
