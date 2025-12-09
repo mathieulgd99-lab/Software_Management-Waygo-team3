@@ -16,14 +16,14 @@
     <nav>
       <ul>
         <li><a href="#">Home</a></li>
-        <li><a href="#itinerary">My Itineraries</a></li>
-        <li><a href="#budget">Budget</a></li>
-        <li><a href="#favorites">Favorites</a></li>
-        <li><a href="history.html">History</a></li>
+        <li id="nav-itinerary"><a href="#itinerary">My Itineraries</a></li>
+        <li id="nav-budget"><a href="#budget">Budget</a></li>
+        <li id="nav-favorites"><a href="#favorites">Favorites</a></li>
+        <li id="nav-history"><a href="history.html">History</a></li>
         <li><a href="login.html" id="profile-link">Profile</a></li>
         <li id="logout-btn" style="display:none;"><a href="#" onclick="logout()">Logout</a></li>
       </ul>
-    </nav>
+</nav>
   </header>
 
   <section class="search">
@@ -77,7 +77,19 @@
     </section>
 
     <section id="favorites">
-      <h3>❤️ Favorites</h3>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+        <h3 style="margin: 0;">❤️ Favorites</h3>
+        
+        <div class="fav-actions">
+            <button onclick="exportFavoritesToText()" style="background-color: #6c757d; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; margin-right: 5px;">
+                📋 Share List
+            </button>
+            <button onclick="clearAllFavorites()" style="background-color: #dc3545; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer;">
+                🗑 Clear All
+            </button>
+        </div>
+      </div>
+
       <div id="favorites-container"></div>
     </section>
     
@@ -135,5 +147,6 @@
   <!-- data and script -->
   <script src="data.js"></script>
   <script src="script.js"></script>
+  <script src="favorites.js"></script>
 </body>
 </html>

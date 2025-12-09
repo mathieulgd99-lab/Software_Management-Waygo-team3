@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Waygo - Login / Sign Up</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="auth-page">
+
+  <header>
+    <div class="logo">
+      ✈️ <h1>Waygo</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="auth-container">
+    <div class="auth-card">
+      <h2 id="form-title">Login</h2>
+
+      <form id="login-form" onsubmit="event.preventDefault(); handleAuth();">
+        <div class="input-group">
+          <label for="name" id="name-label" style="display: none;">Name</label>
+          <input type="text" id="name" placeholder="Your name" style="display: none;">
+        </div>
+        <div class="input-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="you@example.com" required>
+        </div>
+        <div class="input-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="********" required>
+        </div>
+        <button type="submit" id="submit-btn">Login</button>
+      </form>
+
+      <p id="toggle-text">
+        Don’t have an account?
+        <a href="#" onclick="toggleForm()">Sign up</a>
+      </p>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Waygo — Travel smarter, live better 🌍</p>
+  </footer>
+
+  <script>
+    let isLogin = true;
+
+    function toggleForm() {
+      isLogin = !isLogin;
+      document.getElementById("form-title").textContent = isLogin ? "Login" : "Sign Up";
+      document.getElementById("submit-btn").textContent = isLogin ? "Login" : "Sign Up";
+      document.getElementById("toggle-text").innerHTML = isLogin
+        ? `Don’t have an account? <a href="#" onclick="toggleForm()">Sign up</a>`
+        : `Already have an account? <a href="#" onclick="toggleForm()">Login</a>`;
+
+      // Show/hide name field
+      document.getElementById("name").style.display = isLogin ? "none" : "block";
+      document.getElementById("name-label").style.display = isLogin ? "none" : "block";
+    }
+
+function handleAuth() {
+      // Récupération des valeurs
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      if (isLogin) {
+        const storedData = localStorage.getItem("user");
+        
+        if (!storedData) {
+            alert("No account found! Please sign up first.");
+            return;
+        }
+
+        const stored = JSON.parse(storedData);
+
+        if (stored.email !== email || stored.password !== password) {
+          alert("Incorrect email or password!");
+          return;
+        }
+
+        localStorage.setItem("isLoggedIn", "true");
+
+        alert("Welcome back, " + stored.name + "!");
+        window.location.href = "index.html";
+
+      } else {
+        if (!name || !email || !password) {
+          alert("Please fill in all fields!");
+          return;
+        }
+
+        const existingData = localStorage.getItem("user");
+        
+        if (existingData) {
+            const existingUser = JSON.parse(existingData);
+
+            if (existingUser.email === email) {
+                alert("This email is already registered! Please log in instead.");
+                toggleForm(); 
+                return;
+            }
+
+            const confirmOverwrite = confirm(
+                "Warning: An account for " + existingUser.name + " already exists on this browser.\n" +
+                "Creating a new account will overwrite the previous data.\n\n" +
+                "Do you want to continue?"
+            );
+
+            if (!confirmOverwrite) {
+                return; 
+            }
+        }
+        const user = { name, email, password };
+        localStorage.setItem("user", JSON.stringify(user));
+
+        localStorage.setItem("isLoggedIn", "true");
+        
+
+        alert("Account created successfully!");
+        window.location.href = "index.html";
+      }
+    }
+  </script>
+</body>
+</html>

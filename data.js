@@ -12,7 +12,7 @@ const destinations = [
     lng: 139.6503,
     image: "images/tokyo.jpg",
     activities: ["Sushi making", "Visit temples", "Shibuya crossing"],
-    cost: 1200
+    costPerDay: 150
   },
   {
     id: 2,
@@ -23,7 +23,7 @@ const destinations = [
     lng: 2.3522,
     image: "images/paris.jpg",
     activities: ["Eiffel Tower", "Louvre Museum", "Seine river cruise"],
-    cost: 950
+    costPerDay: 120
   },
   {
     id: 3,
@@ -34,7 +34,7 @@ const destinations = [
     lng: -74.0060,
     image: "images/newyork.jpg",
     activities: ["Central Park walk", "Broadway show", "Times Square"],
-    cost: 1100
+    costPerDay: 140
   },
   {
     id: 4,
@@ -45,7 +45,7 @@ const destinations = [
     lng: 12.4964,
     image: "images/rome.jpg",
     activities: ["Colosseum tour", "Vatican visit", "Gelato tasting"],
-    cost: 800
+    costPerDay: 100
   },
   {
     id: 5,
@@ -56,7 +56,7 @@ const destinations = [
     lng: 100.5018,
     image: "images/bangkok.jpg",
     activities: ["Floating markets", "Street food tour", "Grand Palace"],
-    cost: 700
+    costPerDay: 85
   },
   {
     id: 6,
@@ -67,7 +67,7 @@ const destinations = [
     lng: 151.2093,
     image: "images/sydney.jpg",
     activities: ["Surfing", "Sydney Opera House", "Harbor cruise"],
-    cost: 1300
+    costPerDay: 160
   },
   {
     id: 7,
@@ -78,7 +78,7 @@ const destinations = [
     lng: 31.2357,
     image: "images/cairo.jpg",
     activities: ["Pyramids of Giza", "Nile cruise", "Egyptian Museum"],
-    cost: 750
+    costPerDay: 90
   },
   {
     id: 8,
@@ -89,7 +89,7 @@ const destinations = [
     lng: -43.1729,
     image: "images/rio.jpg",
     activities: ["Christ the Redeemer", "Copacabana", "Samba show"],
-    cost: 950
+    costPerDay: 110
   },
   {
     id: 9,
@@ -100,7 +100,7 @@ const destinations = [
     lng: 18.4241,
     image: "images/capetown.jpg",
     activities: ["Table Mountain", "Wine tasting", "Cape Point tour"],
-    cost: 850
+    costPerDay: 105
   },
   {
     id: 10,
@@ -111,7 +111,7 @@ const destinations = [
     lng: -123.1207,
     image: "images/vancouver.jpg",
     activities: ["Stanley Park", "Whale watching", "Ski trip"],
-    cost: 1000
+    costPerDay: 130
   },
   {
     id: 11,
@@ -122,7 +122,7 @@ const destinations = [
     lng: -21.9426,
     image: "images/reykjavik.jpg",
     activities: ["Blue Lagoon", "Northern Lights", "Golden Circle tour"],
-    cost: 1350
+    costPerDay: 170
   },
   {
     id: 12,
@@ -133,7 +133,7 @@ const destinations = [
     lng: -7.9811,
     image: "images/marrakech.jpg",
     activities: ["Medina tour", "Desert camel ride", "Souk shopping"],
-    cost: 650
+    costPerDay: 80
   },
   {
     id: 13,
@@ -144,7 +144,7 @@ const destinations = [
     lng: 115.092,
     image: "images/bali.jpg",
     activities: ["Surf lessons", "Monkey Forest", "Waterfall trek"],
-    cost: 900
+    costPerDay: 95
   },
   {
     id: 14,
@@ -155,7 +155,7 @@ const destinations = [
     lng: -122.4194,
     image: "images/sanfrancisco.jpg",
     activities: ["Golden Gate Bridge", "Alcatraz", "Cable car ride"],
-    cost: 1050
+    costPerDay: 135
   },
   {
     id: 15,
@@ -166,6 +166,6 @@ const destinations = [
     lng: 23.7275,
     image: "images/athens.jpg",
     activities: ["Acropolis", "Greek cuisine tour", "Plaka district"],
-    cost: 800
+    costPerDay: 100
   }
 ];
