@@ -1,7 +1,3 @@
-// data.js - local "database"
-// destinations.js - Waygo travel database
-// Temporary, would be better to fetch from a real databases
-
 const destinations = [
   {
     id: 1,
@@ -12,7 +8,7 @@ const destinations = [
     lng: 139.6503,
     image: "images/tokyo.jpg",
     activities: ["Sushi making", "Visit temples", "Shibuya crossing"],
-    cost: 1200,
+    costPerDay: 150,
     rating: 4.8,
     tags: ["city", "food", "culture"],
     countryCode: "JP"
@@ -26,7 +22,10 @@ const destinations = [
     lng: 2.3522,
     image: "images/paris.jpg",
     activities: ["Eiffel Tower", "Louvre Museum", "Seine river cruise"],
-    cost: 950
+    costPerDay: 120,
+    rating: 4.7,
+    tags: ["city", "culture", "food"],
+    countryCode: "FR"
   },
   {
     id: 3,
@@ -37,7 +36,7 @@ const destinations = [
     lng: -74.0060,
     image: "images/newyork.jpg",
     activities: ["Central Park walk", "Broadway show", "Times Square"],
-    cost: 1100,
+    costPerDay: 140,
     rating: 4.6,
     tags: ["city", "culture", "nightlife"],
     countryCode: "US"
@@ -51,7 +50,7 @@ const destinations = [
     lng: 12.4964,
     image: "images/rome.jpg",
     activities: ["Colosseum tour", "Vatican visit", "Gelato tasting"],
-    cost: 800,
+    costPerDay: 100,
     rating: 4.6,
     tags: ["history", "food", "architecture"],
     countryCode: "IT"
@@ -65,7 +64,7 @@ const destinations = [
     lng: 100.5018,
     image: "images/bangkok.jpg",
     activities: ["Floating markets", "Street food tour", "Grand Palace"],
-    cost: 700,
+    costPerDay: 85,
     rating: 4.5,
     tags: ["food", "markets", "temples"],
     countryCode: "TH"
@@ -79,7 +78,7 @@ const destinations = [
     lng: 151.2093,
     image: "images/sydney.jpg",
     activities: ["Surfing", "Sydney Opera House", "Harbor cruise"],
-    cost: 1300,
+    costPerDay: 160,
     rating: 4.6,
     tags: ["beach", "nature", "city"],
     countryCode: "AU"
@@ -93,7 +92,7 @@ const destinations = [
     lng: 31.2357,
     image: "images/cairo.jpg",
     activities: ["Pyramids of Giza", "Nile cruise", "Egyptian Museum"],
-    cost: 750,
+    costPerDay: 90,
     rating: 4.4,
     tags: ["history", "desert", "culture"],
     countryCode: "EG"
@@ -107,7 +106,7 @@ const destinations = [
     lng: -43.1729,
     image: "images/rio.jpg",
     activities: ["Christ the Redeemer", "Copacabana", "Samba show"],
-    cost: 950,
+    costPerDay: 110,
     rating: 4.5,
     tags: ["beach", "festivals", "music"],
     countryCode: "BR"
@@ -121,7 +120,7 @@ const destinations = [
     lng: 18.4241,
     image: "images/capetown.jpg",
     activities: ["Table Mountain", "Wine tasting", "Cape Point tour"],
-    cost: 850,
+    costPerDay: 105,
     rating: 4.6,
     tags: ["nature", "wine", "hiking"],
     countryCode: "ZA"
@@ -135,7 +134,7 @@ const destinations = [
     lng: -123.1207,
     image: "images/vancouver.jpg",
     activities: ["Stanley Park", "Whale watching", "Ski trip"],
-    cost: 1000,
+    costPerDay: 130,
     rating: 4.5,
     tags: ["outdoors", "mountains", "sea"],
     countryCode: "CA"
@@ -149,7 +148,7 @@ const destinations = [
     lng: -21.9426,
     image: "images/reykjavik.jpg",
     activities: ["Blue Lagoon", "Northern Lights", "Golden Circle tour"],
-    cost: 1350,
+    costPerDay: 170,
     rating: 4.7,
     tags: ["nature", "adventure", "northern-lights"],
     countryCode: "IS"
@@ -163,7 +162,7 @@ const destinations = [
     lng: -7.9811,
     image: "images/marrakech.jpg",
     activities: ["Medina tour", "Desert camel ride", "Souk shopping"],
-    cost: 650,
+    costPerDay: 80,
     rating: 4.4,
     tags: ["markets", "desert", "culture"],
     countryCode: "MA"
@@ -177,7 +176,7 @@ const destinations = [
     lng: 115.092,
     image: "images/bali.jpg",
     activities: ["Surf lessons", "Monkey Forest", "Waterfall trek"],
-    cost: 900,
+    costPerDay: 95,
     rating: 4.6,
     tags: ["beach", "temples", "relaxation"],
     countryCode: "ID"
@@ -191,7 +190,7 @@ const destinations = [
     lng: -122.4194,
     image: "images/sanfrancisco.jpg",
     activities: ["Golden Gate Bridge", "Alcatraz", "Cable car ride"],
-    cost: 1050,
+    costPerDay: 135,
     rating: 4.5,
     tags: ["city", "tech", "coast"],
     countryCode: "US"
@@ -205,9 +204,23 @@ const destinations = [
     lng: 23.7275,
     image: "images/athens.jpg",
     activities: ["Acropolis", "Greek cuisine tour", "Plaka district"],
-    cost: 800,
+    costPerDay: 100,
     rating: 4.5,
     tags: ["history", "culture", "food"],
     countryCode: "GR"
+  },
+  {
+    id: 16,
+    name: "Hanoi",
+    country: "Vietnam",
+    description: "A vibrant city blending ancient temples, bustling markets, and French colonial architecture with modern energy.",
+    lat: 21.0285,
+    lng: 105.8542,
+    image: "images/hanoi.jpg",
+    activities: ["Old Quarter tour", "Hoan Kiem Lake", "Street food tour"],
+    costPerDay: 75,
+    rating: 4.5,
+    tags: ["city", "food", "culture"],
+    countryCode: "VN"
   }
 ];
