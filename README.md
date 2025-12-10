@@ -101,9 +101,10 @@ The objectives are:
    git clone https://github.com/mathieulgd99-lab/Software_Management-Waygo-team3.git
 
 ## To launch the website
-in your shell :
+
+type in your shell :
 python3 -m http.server 8000
 
-in your browser :
+type the following url in your browser :
 http://localhost:8000/index.html
 
