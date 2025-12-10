@@ -1,5 +1,6 @@
 function saveBudget() {
-  const value = parseFloat(document.getElementById("budget-input").value) || 0;
+  const input = document.getElementById("budget-input");
+  const value = input ? (parseFloat(input.value) || 0) : (parseFloat(localStorage.getItem("budget")) || 0);
   localStorage.setItem("budget", value);
   updateBudgetDisplay();
 }
@@ -38,7 +39,8 @@ function getItineraryCost() {
 }
 
 function updateBudgetDisplay() {
-  const totalBudget = parseFloat(document.getElementById("budget-input").value) || 0;
+  const budgetInputEl = document.getElementById("budget-input");
+  const totalBudget = budgetInputEl ? (parseFloat(budgetInputEl.value) || 0) : (parseFloat(localStorage.getItem("budget")) || 0);
   const expenses = JSON.parse(localStorage.getItem("expenses")) || [];
   const spent = expenses.reduce((sum, e) => sum + e.amount, 0);
   const travelCost = getItineraryCost();
