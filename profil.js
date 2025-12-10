@@ -44,6 +44,8 @@ function checkLoginStatus() {
   const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
   if (!isLoggedIn) {
     alert("🔒 You must be logged in to use this feature!");
+    // debug trace to find who triggers redirects
+    console.trace('checkLoginStatus: redirecting to login.html');
     window.location.href = "login.html";
     return false;
   }

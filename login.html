@@ -78,6 +78,8 @@
           alert("Incorrect email or password!");
           return;
         }
+        // mark session active so UI shows authenticated view
+        localStorage.setItem("isLoggedIn", "true");
         alert("Welcome back, " + stored.name + "!");
         window.location.href = "index.html";
       } else {
@@ -88,6 +90,8 @@
         }
         const user = { name, email, password };
         localStorage.setItem("user", JSON.stringify(user));
+        // Mark session active immediately after signup
+        localStorage.setItem("isLoggedIn", "true");
         alert("Account created successfully!");
         window.location.href = "index.html";
       }
