@@ -66,65 +66,28 @@
       document.getElementById("name-label").style.display = isLogin ? "none" : "block";
     }
 
-function handleAuth() {
-      // Récupération des valeurs
+    function handleAuth() {
       const name = document.getElementById("name").value.trim();
       const email = document.getElementById("email").value.trim();
       const password = document.getElementById("password").value.trim();
 
       if (isLogin) {
-        const storedData = localStorage.getItem("user");
-        
-        if (!storedData) {
-            alert("No account found! Please sign up first.");
-            return;
-        }
-
-        const stored = JSON.parse(storedData);
-
-        if (stored.email !== email || stored.password !== password) {
+        // LOGIN
+        const stored = JSON.parse(localStorage.getItem("user"));
+        if (!stored || stored.email !== email || stored.password !== password) {
           alert("Incorrect email or password!");
           return;
         }
-
-        localStorage.setItem("isLoggedIn", "true");
-
         alert("Welcome back, " + stored.name + "!");
         window.location.href = "index.html";
-
       } else {
+        // SIGN UP
         if (!name || !email || !password) {
           alert("Please fill in all fields!");
           return;
         }
-
-        const existingData = localStorage.getItem("user");
-        
-        if (existingData) {
-            const existingUser = JSON.parse(existingData);
-
-            if (existingUser.email === email) {
-                alert("This email is already registered! Please log in instead.");
-                toggleForm(); 
-                return;
-            }
-
-            const confirmOverwrite = confirm(
-                "Warning: An account for " + existingUser.name + " already exists on this browser.\n" +
-                "Creating a new account will overwrite the previous data.\n\n" +
-                "Do you want to continue?"
-            );
-
-            if (!confirmOverwrite) {
-                return; 
-            }
-        }
         const user = { name, email, password };
         localStorage.setItem("user", JSON.stringify(user));
-
-        localStorage.setItem("isLoggedIn", "true");
-        
-
         alert("Account created successfully!");
         window.location.href = "index.html";
       }

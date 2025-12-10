@@ -5,35 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Waygo | Travel History</title>
   <link rel="stylesheet" href="styles.css">
+  
 </head>
+
 <body>
   <header>
     <h1>🌍 Waygo</h1>
-    <nav><a href="index.html">← Back to Home</a></nav>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="history.html" style="text-decoration:underline;">Travel History</a>
+      <a href="login.html">Profile</a>
+    </nav>
   </header>
 
   <main>
     <h2>📜 Your Travel History</h2>
-    <div id="history-container"></div>
-    <p id="history-empty" class="muted" style="display:none;">You have no saved trips yet.</p>
+    <p style="text-align:center; color:#666;">Review, reload, or share your past adventures ✈️</p>
+    <div id="history-container">
+      <!-- Trips dynamically added here -->
+    </div>
   </main>
 
-  <script src="data.js"></script>
-  <script src="itinerary.js"></script>
-  <script src="budget.js"></script>
-  <script src="escape_&_init.js"></script>
-  <script src="history.js"></script>
+  <footer>
+    <p>Made with ❤️ by Waygo Team — Plan smart, travel easy.</p>
+  </footer>
 
+  <script src="data.js"></script>
+  <script src="script.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      // afficher l'historique (scripts requis chargés de façon synchrone ici)
-      try {
-        displayHistory();
-        const history = JSON.parse(localStorage.getItem('travelHistory')) || [];
-        document.getElementById('history-empty').style.display = history.length ? 'none' : '';
-      } catch (e) {
-        console.error('Could not initialize history view', e);
-      }
+    document.addEventListener("DOMContentLoaded", () => {
+      applyProfileUI?.();
+      displayHistory();
     });
   </script>
 </body>
