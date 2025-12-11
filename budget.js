@@ -27,7 +27,7 @@ function removeExpense(index) {
   updateBudgetDisplay();
 }
 
-// MODIFIÉ: Calcul avec jours × costPerDay
+// MODIFIED : number of days × costPerDay
 function getItineraryCost() {
   const itinerary = JSON.parse(localStorage.getItem("itinerary")) || [];
   return itinerary.reduce((sum, item) => {
