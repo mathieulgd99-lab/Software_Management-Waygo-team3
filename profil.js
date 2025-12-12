@@ -13,7 +13,7 @@ function applyProfileUI() {
     const displayName = (user && user.name) ? user.name : "Profile";
     if (profileLink) {
       profileLink.textContent = displayName;
-      profileLink.href = "#";
+      profileLink.href = "#"; 
     }
     if (logoutBtn) logoutBtn.style.display = "inline-block";
 
