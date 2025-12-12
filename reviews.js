@@ -1,15 +1,15 @@
-// ---------- REVIEWS (simple client-only version you wanted) ----------
+// ---------- REVIEWS ----------
 const REVIEWS_STORAGE_KEY = "waygo_reviews";
 let selectedRating = 0;
 let reviews = [];
 let currentRatingFilter = 0;
-// mode de tri actuel
-// relevance_desc = plus pertinent → moins pertinent
-// date_desc      = plus récent → moins récent
+// current sort mode
+// relevance_desc = most relevant → least relevant
+// date_desc      = newest → oldest
 let currentSortMode = "relevance_desc";
 
 
-// récupère l'utilisateur courant depuis localStorage (login.html)
+// retrieves the current user from localStorage (login.html)
 function getCurrentUserInfo() {
   try {
     const stored = JSON.parse(localStorage.getItem("user") || "null");
@@ -23,7 +23,7 @@ function getCurrentUserInfo() {
   }
 }
 
-// charge les avis depuis localStorage
+// loads reviews from localStorage
 function loadReviewsFromStorage() {
   try {
     const raw = localStorage.getItem(REVIEWS_STORAGE_KEY);
@@ -35,7 +35,7 @@ function loadReviewsFromStorage() {
   }
 }
 
-// sauvegarde les avis dans localStorage
+// saves reviews to localStorage
 function saveReviewsToStorage() {
   try {
     localStorage.setItem(REVIEWS_STORAGE_KEY, JSON.stringify(reviews));
@@ -44,7 +44,7 @@ function saveReviewsToStorage() {
   }
 }
 
-// affiche les avis dans le <div id="user-reviews">
+// displays reviews in the <div id="user-reviews">
 function renderUserReviews() {
   const container = document.getElementById("user-reviews");
   if (!container) return;
@@ -59,11 +59,11 @@ function renderUserReviews() {
 
   const { email: currentEmail } = getCurrentUserInfo();
 
-  // 🔥 on récupère la liste filtrée + triée
+  // we get the filtered + sorted list
   const listToDisplay = getFilteredAndSortedReviews();
 
   if (!listToDisplay.length) {
-    // ça veut dire qu’il n’y a pas d’avis correspondant au filtre d’étoiles
+    // that means there are no reviews matching the star filter
     container.innerHTML = `<p class="muted">No reviews with ${currentRatingFilter} stars yet.</p>`;
     renderReviewSummary();
     return;
@@ -99,13 +99,12 @@ function renderUserReviews() {
     container.appendChild(card);
   });
 
-  // résumé / distribution façon Amazon
   renderReviewSummary();
 }
 
 
 
-// affiche les stats (moyenne / nombre d’avis) dans #review-stats (si présent)
+// displays the stats (average / number of reviews) in #review-stats (if present)
 function renderReviewSummary() {
   const statsEl = document.getElementById("review-stats");
   if (!statsEl) return;
@@ -117,7 +116,7 @@ function renderReviewSummary() {
     return;
   }
 
-  // compter combien d’avis pour 1,2,3,4,5 étoiles
+  // count how many reviews for 1,2,3,4,5 stars
   const counts = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
   let sum = 0;
 
@@ -159,12 +158,12 @@ function renderReviewSummary() {
     </div>
   `;
 
-  // clic sur chaque ligne pour filtrer
+  // click on each row to filter
   const rows = statsEl.querySelectorAll(".rating-row");
   rows.forEach((row) => {
     row.addEventListener("click", () => {
       const rating = Number(row.getAttribute("data-rating"));
-      // si on clique deux fois sur la même note → on enlève le filtre
+      // if you click twice on the same rating → remove the filter
       currentRatingFilter = (currentRatingFilter === rating ? 0 : rating);
       renderUserReviews();
     });
@@ -180,15 +179,15 @@ function renderReviewSummary() {
 }
 
 function getFilteredAndSortedReviews() {
-  // copie pour ne pas modifier l’original
+  // copy so we don't modify the original
   let list = reviews.slice();
 
-  // 1) on applique le filtre par nombre d’étoiles (si actif)
+  // 1) apply star rating filter (if active)
   if (currentRatingFilter !== 0) {
     list = list.filter(r => Number(r.rating) === currentRatingFilter);
   }
 
-  // 2) on trie en fonction du mode choisi
+  // 2) sort based on chosen mode
   list.sort((a, b) => {
     const ra = Number(a.rating) || 0;
     const rb = Number(b.rating) || 0;
@@ -197,18 +196,18 @@ function getFilteredAndSortedReviews() {
 
     switch (currentSortMode) {
       case "date_asc":
-        // du plus ancien au plus récent
+        // from oldest to newest
         return da - db;
       case "date_desc":
-        // du plus récent au plus ancien
+        // from newest to oldest
         return db - da;
       case "relevance_asc":
-        // moins pertinent = note plus basse, plus ancien
+        // less relevant = lower rating, older
         if (ra !== rb) return ra - rb;
         return da - db;
       case "relevance_desc":
       default:
-        // plus pertinent = note plus haute, plus récent
+        // more relevant = higher rating, newer
         if (ra !== rb) return rb - ra;
         return db - da;
     }
@@ -218,7 +217,7 @@ function getFilteredAndSortedReviews() {
 }
 
 
-// appelée par le bouton "Submit" dans index.html
+// called by the "Submit" button in index.html
 function addReview() {
   const input = document.getElementById("review-input");
   if (!input) return;
@@ -243,7 +242,7 @@ function addReview() {
   reviews.push(review);
   saveReviewsToStorage();
 
-  // reset formulaire
+  // reset form
   input.value = "";
   selectedRating = 0;
   const starsEls = document.querySelectorAll("#rating span");
@@ -252,14 +251,14 @@ function addReview() {
   renderUserReviews();
 }
 
-// suppression d’un avis (seulement possible sur ses avis si connecté)
+// deletion of a review (only possible on own reviews if logged in)
 function deleteReview(id) {
   reviews = reviews.filter((r) => r.id !== id);
   saveReviewsToStorage();
   renderUserReviews();
 }
 
-// initialisation de la section reviews
+// initialization of the reviews section
 function initReviews() {
   const stars = document.querySelectorAll("#rating span");
   if (stars.length) {
@@ -274,7 +273,7 @@ function initReviews() {
     });
   }
 
-  // 🔗 écouteur sur le select de tri
+  // listener on the sort select
   const sortSelect = document.getElementById("review-sort");
   if (sortSelect) {
     sortSelect.addEventListener("change", (e) => {

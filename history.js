@@ -1,5 +1,5 @@
 function saveItineraryToHistory() {
-  // lire l'itinéraire depuis localStorage (ne pas dépendre d'une variable globale)
+  // Read the itinerary from localStorage (do not depend on a global variable)
   const itineraryLocal = JSON.parse(localStorage.getItem("itinerary")) || [];
   if (!itineraryLocal.length) {
     alert("You need at least one destination in your itinerary before saving.");
