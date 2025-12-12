@@ -183,13 +183,6 @@ footer {
   cursor: default;
 }
 
-a[href="#"] {
-  pointer-events: none;
-  color: gray;
-  text-decoration: none;
-  cursor: default;
-}
-
 
 
 #logout-btn a {

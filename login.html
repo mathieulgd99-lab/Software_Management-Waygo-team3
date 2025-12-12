@@ -41,7 +41,7 @@
 
       <p id="toggle-text">
         Don’t have an account?
-        <a href="#" onclick="toggleForm()">Sign up</a>
+        <a href="##" onclick="toggleForm()">Sign up</a>
       </p>
     </div>
   </main>
@@ -58,8 +58,8 @@
       document.getElementById("form-title").textContent = isLogin ? "Login" : "Sign Up";
       document.getElementById("submit-btn").textContent = isLogin ? "Login" : "Sign Up";
       document.getElementById("toggle-text").innerHTML = isLogin
-        ? `Don’t have an account? <a href="#" onclick="toggleForm()">Sign up</a>`
-        : `Already have an account? <a href="#" onclick="toggleForm()">Login</a>`;
+        ? `Don’t have an account? <a href="##" onclick="toggleForm()">Sign up</a>`
+        : `Already have an account? <a href="##" onclick="toggleForm()">Login</a>`;
 
       // Show/hide name field
       document.getElementById("name").style.display = isLogin ? "none" : "block";
