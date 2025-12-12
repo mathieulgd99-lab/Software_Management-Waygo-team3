@@ -5,16 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Waygo | Travel History</title>
   <link rel="stylesheet" href="history.css">
+  <link rel="stylesheet" href="styles.css">
   
 </head>
 
 <body>
   <header>
-    <h1>🌍 Waygo</h1>
+    <h1>✈️ Waygo</h1>
     <nav>
-      <a href="index.html">Home</a>
-      <a href="history.html" style="text-decoration:underline;">Travel History</a>
-      <a href="login.html">Profile</a>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a id="profile-link">Profile</a></li>
+        <li id="logout-btn" style="display:none;"><a href="#" onclick="logout()">Logout</a></li>
+      </ul>
     </nav>
   </header>
 

@@ -73,16 +73,17 @@ function displayItinerary() {
 
     const li = document.createElement("li");
     li.innerHTML = `
-      <div>
+      <div class="it-actions">
         <strong>${escapeHtml(d.name)}</strong>
         <small>(${escapeHtml(d.country)})</small>
+        <button  onclick="viewOnMap(${d.id})">View</button>
         <span class="cost-tag">${days} day(s) × $${costPerDay} = <strong>$${destinationTotal}</strong></span>
       </div>
-      <div class="it-actions">
+      <div class="it-actions" style="display:flex; align-items:center; gap:6px;">
         <input type="number" min="1" value="${days}"
           onchange="updateDestinationDays(${d.id}, this.value)"
-          style="width:70px; padding:4px;">
-        <button onclick="viewOnMap(${d.id})">View</button>
+          style="width:45px; padding:2px; text-align:center;">
+        <span>day(s)</span>
         <button onclick="removeFromItinerary(${d.id})">Remove</button>
       </div>
     `;
