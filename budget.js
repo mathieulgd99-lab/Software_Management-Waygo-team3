@@ -1,5 +1,6 @@
 function saveBudget() {
-  const value = parseFloat(document.getElementById("budget-input").value) || 0;
+  const input = document.getElementById("budget-input");
+  const value = input ? (parseFloat(input.value) || 0) : (parseFloat(localStorage.getItem("budget")) || 0);
   localStorage.setItem("budget", value);
   updateBudgetDisplay();
 }
@@ -26,16 +27,20 @@ function removeExpense(index) {
   updateBudgetDisplay();
 }
 
+// MODIFIED : number of days × costPerDay
 function getItineraryCost() {
   const itinerary = JSON.parse(localStorage.getItem("itinerary")) || [];
-  return itinerary.reduce((sum, id) => {
-    const d = destinations.find(x => x.id === id);
-    return sum + (d?.cost || 0);
+  return itinerary.reduce((sum, item) => {
+    const d = destinations.find(x => x.id === item.id);
+    const days = item.days || 1;
+    const cost = d ? (d.costPerDay * days) : 0;
+    return sum + cost;
   }, 0);
 }
 
 function updateBudgetDisplay() {
-  const totalBudget = parseFloat(localStorage.getItem("budget")) || 0;
+  const budgetInputEl = document.getElementById("budget-input");
+  const totalBudget = budgetInputEl ? (parseFloat(budgetInputEl.value) || 0) : (parseFloat(localStorage.getItem("budget")) || 0);
   const expenses = JSON.parse(localStorage.getItem("expenses")) || [];
   const spent = expenses.reduce((sum, e) => sum + e.amount, 0);
   const travelCost = getItineraryCost();

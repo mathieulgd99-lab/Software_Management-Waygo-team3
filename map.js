@@ -27,7 +27,11 @@ function viewOnMap(id) {
   const dest = destinations.find(d => d.id === id);
   if (!dest) return;
   if (!map) initMap();
-  map.setView([dest.lat, dest.lng], 10, { animate: true });
+  map.flyTo([dest.lat, dest.lng], 9, {
+  animate: true,
+  duration: 1
+  });
+
   if (markers[id] && typeof markers[id].openPopup === "function") {
     markers[id].openPopup();
   }

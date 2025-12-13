@@ -95,7 +95,26 @@ The objectives are:
 
 ---
 
-## Installation Guide
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/mathieulgd99-lab/Software_Management-Waygo-team3.git
+## Installation and Usage Guide
+
+### Requirements
+To run this project, you only need to have **Python 3** installed on your system.
+
+### Installation
+Clone the repository:
+```bash
+git clone https://github.com/mathieulgd99-lab/Software_Management-Waygo-team3.git
+cd Software_Management-Waygo-team3
+```
+
+### Usage
+Start a local Python server to host the website (run the command in your project files):
+```bash
+python3 -m http.server 8000
+```
+
+Open your browser and navigate to:
+```
+http://localhost:8000
+```
+

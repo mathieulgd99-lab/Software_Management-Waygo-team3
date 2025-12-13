@@ -16,7 +16,6 @@ function populateCountryFilter() {
     });
   }
 
-// TODO : implement the search option
 
 function searchDestinations() {
   const inputEl = document.getElementById("search-input");
@@ -48,7 +47,7 @@ function searchDestinations() {
     const actsHtml = d.activities ? d.activities.map(a => `<li>${escapeHtml(a)}</li>`).join("") : "";
     card.innerHTML = `
       <div class="thumb">
-        <img src="${d.image}" alt="${escapeHtml(d.name)}" loading="lazy" onerror="this.style.opacity=0.6; this.nextElementSibling && (this.nextElementSibling.style.display='block')">
+        <img src="${d.image}" alt="${escapeHtml(d.name)}" loading="lazy" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'400\\' height=\\'300\\'><rect width=\\'100%\\' height=\\'100%\\' fill=\\'%23ddd\\'/><text x=\\'50%\\' y=\\'50%\\' dominant-baseline=\\'middle\\' text-anchor=\\'middle\\' fill=\\'%23666\\' font-size=\\'20\\'>No image</text></svg>'">
       </div>
       <div class="card-body">
         <h4>${escapeHtml(d.name)} <span class="country">(${escapeHtml(d.country)})</span></h4>

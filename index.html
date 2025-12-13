@@ -12,18 +12,19 @@
 </head>
 <body>
   <header>
-    <div class="logo">✈️ <h1>Waygo</h1></div>
+    <h1>
+    ✈️ Waygo
+    </h1>
     <nav>
       <ul>
-        <li><a href="#">Home</a></li>
         <li id="nav-itinerary"><a href="#itinerary">My Itineraries</a></li>
         <li id="nav-budget"><a href="#budget">Budget</a></li>
         <li id="nav-favorites"><a href="#favorites">Favorites</a></li>
         <li id="nav-history"><a href="history.html">History</a></li>
-        <li><a href="login.html" id="profile-link">Profile</a></li>
-        <li id="logout-btn" style="display:none;"><a href="#" onclick="logout()">Logout</a></li>
+        <li><a id="profile-link">Profile</a></li>
+        <li id="logout-btn" style="display:none;"><a href="" onclick="logout()">Logout</a></li>
       </ul>
-</nav>
+  </nav>
   </header>
 
   <section class="search">
@@ -93,8 +94,6 @@
       <div id="favorites-container"></div>
     </section>
     
-
-    <!-- Reviews (kept simple like you wanted) -->
     <section id="reviews">
       <h3>⭐ User Reviews</h3>
       <p id="review-stats" class="muted"></p>
@@ -151,15 +150,22 @@
   </main>
 
   <footer>
-    <p>© 2025 Waygo — Travel smarter, live better 🌍 | Contact: <a href="mailto:contact@waygo.com">contact@waygo.com</a></p>
+    <p>© 2025 Waygo — Travel smarter, live better 🌍</a></p>
   </footer>
 
   <!-- Leaflet JS -->
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
   <!-- data and script -->
-  <script src="data.js"></script>
-  <script src="script.js"></script>
-  <script src="favorites.js"></script>
+  <script src="./data.js"></script>
+  <script src="./escape_&_init.js"></script>
+  <script src="./map.js"></script>
+  <script src="./itinerary.js"></script>
+  <script src="./budget.js"></script>
+  <script src="./history.js"></script>
+  <script src="./favorites.js"></script>
+  <script src="./search.js"></script>
+  <script src="./reviews.js"></script>
+  <script src="./profil.js"></script>
 </body>
 </html>
