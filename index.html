@@ -97,6 +97,7 @@
     <!-- Reviews (kept simple like you wanted) -->
     <section id="reviews">
       <h3>⭐ User Reviews</h3>
+      <p id="review-stats" class="muted"></p>
 
       <div class="review-list">
         <div class="review-card">
@@ -130,6 +131,18 @@
         </div>
         <textarea id="review-input" placeholder="Write your comment..."></textarea>
         <button onclick="addReview()">Submit</button>
+      </div>
+
+      <div id="review-stats"></div>
+
+      <div class="review-toolbar">
+        <label for="review-sort">Sort by:</label>
+        <select id="review-sort">
+          <option value="relevance_desc">Most relevant</option>
+          <option value="relevance_asc">Least relevant</option>
+          <option value="date_desc">Most recent</option>
+          <option value="date_asc">Oldest first</option>
+        </select>
       </div>
 
       <div id="user-reviews"></div>
